@@ -7,12 +7,19 @@ import SelectRIconInput from "./inputs/SelectRIconInput";
 import Textarea from "./inputs/Textarea";
 import UploadFile from "./Upload/UploadFile";
 import QuestionCard from "./cards/QuestionCard";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import Dice from "../assets/svg/dice";
+import Crono from "../assets/svg/crono";
+import Verivfy from "../assets/svg/Verivfy";
+import Camera from "../assets/svg/camera";
+import Attemps from "../assets/svg/Attemps";
+import Expected from "../assets/svg/Expected";
 
 type Props = {};
 
 const Body = (props: Props) => {
   return (
-    <main className="w-9/12 mx-auto -z-20">
+    <main className="w-9/12 mx-auto mb-6 -z-20">
       {/* top */}
       <div className="flex justify-between items-center mt-3 mb-2 ">
         <h6 className="font-semibold text-lg">
@@ -145,9 +152,192 @@ const Body = (props: Props) => {
         </button>
       </MainCard>
       {/* End Training quiz */}
+      {/* settings */}
+      <div className="flex mt-6 overflow-x-hidden">
+        <Setting
+          icon={<Dice />}
+          title="Random questions"
+          action={<RandomQuestionsAction />}
+        />
+        <Setting
+          icon={<Crono />}
+          title="Time per question"
+          action={<TimePerQuestionAction />}
+        />
+        <Setting
+          icon={<Verivfy />}
+          title="Passing score"
+          action={<PassingScoreAction />}
+        />
+        <Setting
+          icon={<Camera />}
+          title="Webcam validation"
+          action={<WebcamValidationAction />}
+        />
+        <Setting
+          icon={<Expected />}
+          title="Time Expected"
+          action={<TimeExpectedAction />}
+        />
+        <Setting
+          icon={<Attemps />}
+          title="Attemps"
+          action={<AttempsAction />}
+        />
+      </div>
+      {/* End Settings */}
       {/* End Areas */}
     </main>
   );
 };
 
 export default Body;
+
+export const Setting = ({
+  title,
+  icon,
+  action,
+}: {
+  title?: string;
+  icon?: any;
+  action?: any;
+}) => {
+  return (
+    <MainCard className="w-44 h-40 px-[4px] py-[4px] mx-3">
+      <AiOutlineInfoCircle
+        size={18}
+        style={{ color: "#D6D6D6", marginLeft: "auto" }}
+      />
+      <div className="flex items-center flex-col justify-center">
+        {icon}
+        <p className="text-xs font-semibold my-2">{title}</p>
+      </div>
+      {action}
+    </MainCard>
+  );
+};
+export const TimePerQuestionAction = () => {
+  return (
+    <div className="flex items-center justify-between ">
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        -
+      </button>
+      <div className="px-5 py-1  rounded-lg border text-blue-600 border-blue-600">
+        45s
+      </div>
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        +
+      </button>
+    </div>
+  );
+};
+export const RandomQuestionsAction = () => {
+  return (
+    <div className="flex items-center justify-between ">
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        -
+      </button>
+      <div className="px-5 py-1  rounded-lg border text-blue-600 border-blue-600">
+        10
+      </div>
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        +
+      </button>
+    </div>
+  );
+};
+export const PassingScoreAction = () => {
+  return (
+    <div className="flex items-center justify-between ">
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        -
+      </button>
+      <div className="px-5 py-1  rounded-lg border text-blue-600 border-blue-600">
+        80%
+      </div>
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        +
+      </button>
+    </div>
+  );
+};
+export const WebcamValidationAction = () => {
+  return (
+    <div className="mx-12 mt-2">
+      <label className="relative inline-flex items-center mb-4 cursor-pointer">
+        <input type="checkbox" value="" className="sr-only peer" />
+        <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+      </label>{" "}
+    </div>
+  );
+};
+export const TimeExpectedAction = () => {
+  return (
+    <div className="flex items-center justify-between ">
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        -
+      </button>
+      <div className="px-3 py-1  rounded-lg border text-blue-600 border-blue-600">
+        30min
+      </div>
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        +
+      </button>
+    </div>
+  );
+};
+export const AttempsAction = () => {
+  return (
+    <div className="flex items-center justify-between ">
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        -
+      </button>
+      <div className="px-5 py-1  rounded-lg border text-blue-600 border-blue-600">
+        3
+      </div>
+      <button
+        type="button"
+        className="text-white bg-gray-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        disabled
+      >
+        +
+      </button>
+    </div>
+  );
+};
