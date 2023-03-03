@@ -4,10 +4,13 @@ import { GrFormClose } from "react-icons/gr";
 import { BiCloudUpload } from "react-icons/bi";
 import UploadFile from "../Upload/UploadFile";
 
-type CardProps = { index?: number } & React.ComponentPropsWithRef<"button">;
+type CardProps = {
+  index?: number;
+  remove?: any;
+} & React.ComponentPropsWithRef<"button">;
 
 const QuestionCard = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ children, className, index, ...rest }, ref) => {
+  ({ children, className, remove, index, ...rest }, ref) => {
     return (
       <div
         ref={ref}
@@ -23,7 +26,9 @@ const QuestionCard = React.forwardRef<HTMLDivElement, CardProps>(
               <h6 className="text-lg text-gray-900 font-bold ">
                 Question {index}
               </h6>
-              <GrFormClose style={{ color: "#C7C7C7" }} size={18} />
+              <button onClick={remove}>
+                <GrFormClose style={{ color: "#C7C7C7" }} size={18} />
+              </button>
             </div>
             <div className="bg-white  py-3 px-5 w-[660px] rounded-lg font-semibold mt-3 text-gray-500 text-xs">
               <p>

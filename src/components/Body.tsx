@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 import MainCard from "./cards/MainCard";
 import SelectInput from "./inputs/SelectInput";
 import Security from "../assets/svg/security";
@@ -27,14 +29,24 @@ type CardType = {
   icon?: any;
   action?: any;
 };
+
+type QuestionListType = {
+  id: number;
+};
+
 export const Setting = ({ title, icon, action }: CardType) => {
   return (
     <MainCard className="w-44 h-40 px-[4px] py-[4px] snap-start ">
-      <AiOutlineInfoCircle
-        size={18}
-        style={{ color: "#D6D6D6", marginLeft: "auto" }}
-      />
-      <div className="flex items-center flex-col justify-center">
+      <a href="#" id="my-anchor-element" className=" float-right">
+        <AiOutlineInfoCircle size={18} style={{ color: "#D6D6D6" }} />
+        <Tooltip
+          variant="light"
+          className="p-1 w-36 rounded-md text-gray-700 drop-shadow-sm text-xs"
+          anchorSelect="#my-anchor-element"
+          content="When the countdown isfinished, the system willautomatically move to thenext question."
+        />
+      </a>
+      <div className="flex items-center flex-col justify-center mt-5">
         {icon}
         <p className="text-xs font-semibold my-2">{title}</p>
       </div>
@@ -181,7 +193,23 @@ const CardList: CardType[] = [
 ];
 const Body = (props: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [Questions, setQuestions] = useState<QuestionListType[]>([]);
+  const [nextId, setNextId] = useState(1);
 
+  const handleAddQuestion = () => {
+    const newQuestion: QuestionListType = {
+      id: nextId,
+    };
+    setQuestions([...Questions, newQuestion]);
+    setNextId(nextId + 1);
+  };
+
+  const handleRemoveQuestion = (id: number) => {
+    const newQuestions = Questions.filter((Question) => Question.id !== id);
+    setQuestions(newQuestions);
+  };
+
+  // handleNextClick Slider
   const handleNextClick = () => {
     const container = containerRef.current;
     if (container) {
@@ -191,7 +219,7 @@ const Body = (props: Props) => {
       });
     }
   };
-
+  // Handel Back Slider
   const handleBackClick = () => {
     const container = containerRef.current;
     if (container) {
@@ -324,11 +352,20 @@ const Body = (props: Props) => {
           to 100 questions.
         </p>
         <div className="w-full h-[1px] bg-gray-400" />
-        <QuestionCard index={1} />
-        <QuestionCard index={2} />
+
+        {Questions.map((q) => (
+          <QuestionCard
+            index={q.id}
+            key={q.id}
+            remove={() => handleRemoveQuestion(q.id)}
+          />
+        ))}
+        {/* <QuestionCard index={1} />
+        <QuestionCard index={2} /> */}
 
         {/* Add Question + */}
         <button
+          onClick={handleAddQuestion}
           type="button"
           className=" bg-blue-300 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none text-blue-700 "
         >
