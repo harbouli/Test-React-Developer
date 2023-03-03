@@ -11,7 +11,7 @@ const EnglishSVG = (props: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_401_15)">
+      <g clipPath="url(#clip0_401_15)">
         <path
           d="M6.53145 17.9016V13.8047L3.47363 16.0609C4.33457 16.8625 5.37363 17.4859 6.53145 17.9016Z"
           fill="#2A5F9E"

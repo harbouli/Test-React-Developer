@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-type CardProps = React.ComponentPropsWithRef<"button">;
+type CardProps = React.ComponentPropsWithRef<"div">;
 
 const MainCard = React.forwardRef<HTMLDivElement, CardProps>(
   ({ children, className, ...rest }, ref) => {

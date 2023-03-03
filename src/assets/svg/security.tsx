@@ -11,7 +11,7 @@ const Security = (props: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_401_192)">
+      <g clipPath="url(#clip0_401_192)">
         <path
           d="M8.99408 1.092C7.50008 1.092 6.33958 0.546 5.80908 0V7.646H12.1796V0C11.6486 0.546 10.5001 1.092 8.99408 1.092Z"
           fill="#994308"

@@ -42,7 +42,7 @@ const QuestionCard = React.forwardRef<HTMLDivElement, CardProps>(
               </h6>
               <p className="text-xs text-gray-400">Optional</p>
             </div>
-            <UploadFile height="w-[360px]" />
+            <UploadFile className="w-[330px]" />
           </div>
         </div>
       </div>

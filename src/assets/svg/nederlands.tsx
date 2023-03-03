@@ -11,7 +11,7 @@ const NederlandsSVG = (props: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_401_436)">
+      <g clipPath="url(#clip0_401_436)">
         <path
           d="M10.9492 0.625C6.85547 0.625 3.38672 3.21875 2.10547 6.875H19.793C18.5117 3.21875 15.043 0.625 10.9492 0.625Z"
           fill="#ED4C5C"

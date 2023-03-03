@@ -11,7 +11,7 @@ const GermanySVG = (props: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_401_499)">
+      <g clipPath="url(#clip0_401_499)">
         <path
           d="M10.918 0.625C6.82422 0.625 3.35547 3.25 2.07422 6.875H19.7617C18.4805 3.25 15.0117 0.625 10.918 0.625Z"
           fill="#3E4347"
